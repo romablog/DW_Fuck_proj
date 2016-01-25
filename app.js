@@ -47,6 +47,7 @@ app.use(function(err, req, res, next) {
         err = new HttpError(err);
     }
 
+
     if (err instanceof HttpError) {
         res.sendHttpError(err);
     } else {
