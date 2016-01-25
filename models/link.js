@@ -18,7 +18,23 @@ var schema = new Schema({
         required: true
     }
 });
-
+//Roma
+schema.statics.allUsersFile = function(username, callback) {
+    var File = this;
+    async.waterfall([
+        function(callback) {
+            File.findOne({username: username}, callback);
+        },
+        function(user, callback) {
+            if (user) {
+                callback(user.fileName);
+            } else {
+                callback("No Text");
+            }
+        }
+    ], callback);
+};
+/*
 schema.statics.allUsersFile = function(username, fileName, callback) {
     var File = this;
     async.waterfall([
@@ -34,7 +50,7 @@ schema.statics.allUsersFile = function(username, fileName, callback) {
         }
     ], callback);
 };
-
+*/
 schema.statics.findFile = function(username, fileName, callback) {
     var File = this;
     async.waterfall([
