@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var bodyParser = require('body-parser');
 var config = require('./config');
 var mongoose = require('./libs/mongoose');
 var log = require('./libs/log')(module);
@@ -20,7 +21,7 @@ if (app.get('env') == 'development') {
     app.use(express.logger('default'));
 }
 
-app.use(express.bodyParser());
+app.use(bodyParser.json());
 
 app.use(express.cookieParser());
 
