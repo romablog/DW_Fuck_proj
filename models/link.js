@@ -19,15 +19,19 @@ var schema = new Schema({
     }
 });
 
-schema.statics.allUsersFile = function(username, fileName, callback) {
+
+schema.statics.allUsersFile = function(username, callback) {
     var File = this;
     async.waterfall([
         function(callback) {
-            File.findOne({username: username, fileName: fileName}, callback);
+            File.find({username: username}, callback);
         },
-        function(file, callback) {
-            if (file) {
-                callback(file.fileText);
+        function(recordsByUser, callback) {
+            if (recordsByUser) {
+                 var fileNames = recordsByUser.map(function(record){
+                     return record.fileName;
+                 });
+                callback(fileNames);
             } else {
                 callback("No Text");
             }
