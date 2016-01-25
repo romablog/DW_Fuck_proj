@@ -19,6 +19,7 @@ var schema = new Schema({
     }
 });
 
+
 schema.statics.allUsersFile = function(username, callback) {
     var File = this;
     async.waterfall([
