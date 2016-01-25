@@ -18,7 +18,7 @@ var schema = new Schema({
         required: true
     }
 });
-//Roma
+
 schema.statics.allUsersFile = function(username, callback) {
     var File = this;
     async.waterfall([
@@ -31,22 +31,6 @@ schema.statics.allUsersFile = function(username, callback) {
                      return record.fileName;
                  });
                 callback(fileNames);
-            } else {
-                callback("No Text");
-            }
-        }
-    ], callback);
-};
-
-schema.statics.allUsersFile = function(username, fileName, callback) {
-    var File = this;
-    async.waterfall([
-        function(callback) {
-            File.findOne({username: username, fileName: fileName}, callback);
-        },
-        function(file, callback) {
-            if (file) {
-                callback(file.fileText);
             } else {
                 callback("No Text");
             }
