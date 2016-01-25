@@ -1,5 +1,4 @@
 var async = require('async');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var mongoose = require('../libs/mongoose'),
     Schema = mongoose.Schema;
