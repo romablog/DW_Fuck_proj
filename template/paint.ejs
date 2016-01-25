@@ -1,0 +1,102 @@
+<% layout('./layout/page') -%>
+<% block('title', "Paint") %>
+
+<html lang="en" ng-app="myApp" class="no-js">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body ng-controller="View1Controller">
+<script src="angular/angular.js"></script>
+<script src="angular-route/angular-route.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view1/image-service.js"></script>
+<script src="view1/imagelist.js"></script>
+<script src="view1/fabric.js"></script>
+<script src="view1/canvas-directive.js"></script>
+<script src="version/version.js"></script>
+<script src="version/version-directive.js"></script>
+<script src="version/interpolate-filter.js"></script>
+<script src="/view1/appPaint.js"></script>
+<table style="width: 100%; padding-top: 50px">
+    <tr>
+        <td height="100px" width="240px">
+            <ul id="drawing-mode-options" style="list-style-type: none;">
+                <li class="dropdown">
+                    <h4 href="#" class="dropdown-toggle text-warning" data-toggle="dropdown" role="button" aria-expanded="false" style="font-size: 20px" >Brushes<span class="caret"></span></h4>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><button id="Small" class="btn btn-default text-warning" ng-click="FirstWidth()" style="font-size: 15px">Small</button></li>
+                        <li><button id="Second width" class="btn btn-default text-warning" ng-click="SecondWidth()" style="font-size: 15px">Medium</button></li>
+                        <li><button id="Third width" class="btn btn-default text-warning" ng-click="ThirdWidth()" style="font-size: 15px">Big</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </td>
+        <td height="400px" width="1000px" style="vertical-align: top" rowspan="6">
+        <canvas id='c' canvas-directive width="920px" height="400px"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td height="10px" width="180px">
+            <div class="form-group">
+                <ul style="list-style-type: none">
+                    <li>
+                        <label for="brushcolor" class="text-warning" aria-expanded="false" style="font-size: 20px" ><h4>Brush color:</h4></label>
+                    </li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td height="10px" align="left" style="padding-left: 25px" width="240px">
+            <div  style="width: 100px">
+                <input type="color" class="form-control" id="brushcolor" style="background-color: transparent" ng-model="brushcolor"/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td height="100px" width="240px">
+            <ul style="list-style-type: none">
+            <li class="dropdown">
+                <h4 href="#" class="dropdown-toggle text-warning" data-toggle="dropdown" role="button" aria-expanded="false" style="font-size: 20px">Save/Clear<span class="caret"></span></h4>
+                <ul class="dropdown-menu" role="menu">
+                    <li><button ng-click="send()" class="btn btn-default text-warning" style="font-size: 15px">Save</button></li>
+                    <li><button id="clear-canvas" class="btn btn-default text-warning" ng-click="Clear()" style="font-size: 15px">Clear</button></li>
+                </ul>
+            </li>
+            </ul>
+        </td>
+    </tr>
+    <hr>
+    <tr>
+        <td drop-directive style="width: 240px">
+            <p style="text-align: center; font-size: 20px; padding-right: 40px" class="text-warning">Drop Area</p>
+            <div ng-controller="ImageListController" style="width: 200px; max-height: 300px; overflow: auto; overflow">
+                <script src="view1/drop-directive.js"></script>
+                <div ng-repeat="image in images">
+                    <image-directive></image-directive>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<hr>
+<style>
+
+    body { scrollbar-face-color:#5997CA;
+
+        scrollbar-shadow-color: #ffffff;
+
+        scrollbar-highlight-color: #ffffff;
+
+        scrollbar-3dlight-color: #5997CA;
+
+        scrollbar-darkshadow-color: #5997CA;
+
+        scrollbar-track-color: #F6F6F6;
+
+        scrollbar-arrow-color: #F6F6F6; }
+
+</style>
+</body>
+</html>
