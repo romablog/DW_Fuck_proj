@@ -16,12 +16,10 @@ module.exports = function(app) {
   app.get('/registry', require('./registry').get);
   app.post('/registry', require('./registry').post);
 
-  app.get('/paint', checkAuth, require('./paint').get);
-
   app.post('/logout', require('./logout').post);
 
-  app.post('/link', require('./link').post);
-  app.get('/link', require('./link').get);
+  app.post('/files', require('./files').post);
+  app.get('/files', require('./files').get);
 
-  app.get('/brain', require('./brain').get);
+  app.get('/brain', checkAuth,require('./brain').get);
 };
