@@ -1,10 +1,3 @@
-// interactive input mode:
-//
-// a     ascii char
-// #97   decimal char index
-// !141  octal char index
-// $61   hex char index
-
 var g_debugging = 0;
 var g_memory = Array();
 var g_max_mem = 255;
@@ -48,7 +41,7 @@ function init_io(){
 function init_prog(code){
     g_program.length = 0;
     for(var i=0; i<code.length; i++){
-        var op = code.charAt(i);
+        var op = code.charAt(i)
         // check it's not a carriage return or anything that will
         //  break the program viewer too badly :)
         if (is_valid_op(op)){
@@ -78,7 +71,7 @@ function init_targets(){
 }
 
 function init_input(){
-    g_prompt_for_input = document.getElementById('input_mode_1').checked;
+    g_prompt_for_input = 1;
     g_input.length = 0;
     var in_data = document.getElementById('edit_input').value;
     for(var i=0; i<in_data.length; i++){

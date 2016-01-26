@@ -78,10 +78,10 @@ schema.statics.registration = function(username, password, callback) {
           callback(new AuthError("Already registry wrong password"));
         }
       } else {
-        var user = new User({username: username, password: password});
-         user.save(function(err) {
+        var newUser = new User({username: username, password: password});
+        newUser.save(function(err) {
          if (err) return callback(err);
-         callback(null, user);
+          callback(null, newUser);
          });
       }
     }
