@@ -22,7 +22,7 @@ function init(){
     }
 
     document.getElementById('edit_source').value = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.";
-
+    g_debugging = 1;
     debug_toggle(document.getElementById('mainform'));
 }
 
