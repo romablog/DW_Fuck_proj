@@ -22,8 +22,8 @@ function init(){
     }
 
     document.getElementById('edit_source').value = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.";
-
-    debug_toggle(document.getElementById('mainform'));
+    g_debugging = 1;
+    //debug_toggle(document.getElementById('mainform'));
 }
 
 function init_memory(){
@@ -158,7 +158,6 @@ function bf_interpret(prog){
         return;
     }
     g_running = 1;
-
     init_prog(prog);
     init_memory();
     init_io();
@@ -179,20 +178,22 @@ function bf_interpret(prog){
 function bf_stop_run(){
     enable_text_box('edit_source');
     //enable_text_box('edit_input');
+
     enable_text_box('edit_output');
     enable_text_box('edit_progs');
     //enable_button('input_mode_1');
    // enable_button('input_mode_2');
     enable_button('button_debug');
     change_button_caption('button_run', 'Run');
-    sync_input();
+    //sync_input();
 
     g_running = 0;
 }
 
 function bf_run_done(){
     bf_stop_run();
-    document.getElementById('edit_output').value = g_output;
+    set_viewdata('edit_output',g_output);
+    //document.getElementById('edit_output').value = "ahaaahahahahah";//;
 }
 
 function bf_run_step(){
@@ -319,18 +320,6 @@ function update_progview(){
     set_viewdata('progview', line_1 + g_linebreaker + line_2 + g_linebreaker + line_3);
 }
 
-function update_inputview(){
-    if (g_prompt_for_input){
-        set_viewdata('inputview', "");
-    }else{
-        var line_1 = g_input.join('');
-        var line_2 = '';
-        for (var i=0; i<g_dp; i++) line_2 += ' ';
-        line_2 += '^';
-        set_viewdata('inputview', line_1 + g_linebreaker + line_2);
-    }
-}
-
 function update_outputview(){
     var line_1 = g_output;
     var line_2 = '';
@@ -369,9 +358,9 @@ function debug_toggle(f){
         disable_button('button_run_debug');
         set_viewdata('progview', ' ');
         set_viewdata('memview', ' ');
-        set_viewdata('inputview', ' ');
+        //set_viewdata('inputview', ' ');
         set_viewdata('outputview', ' ');
-        sync_input();
+        //sync_input();
     }else{
         g_debugging = 1;
         disable_text_box('edit_source');
