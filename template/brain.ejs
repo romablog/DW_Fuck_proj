@@ -1,10 +1,17 @@
 <% layout('./layout/page') %>
 <% block('title', "BrainFack") %>
-
+<html ng-app="brainApp">
 <body onload="init();" style="margin-top: 50px">
 <!--<link rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css"/>-->
 <script language="Javascript" src="/sourse/array.js"></script>
+<script src="angular/angular.js"></script>
+<script src="view1/view1.js"></script>
+<script src="/view1/brainApp.js"></script>
 <script src="/sourse/sourseCode.js"></script>
+<script src="/view1/source-service.js"></script>
+<script src="/view1/sourcelist.js"></script>
+
+<script src="view1/drop-directive.js"></script>
 
 <div id="page">
 
@@ -18,6 +25,22 @@
                     <input type="button" value="Single Step" onclick="run_step();" disabled id="button_step" class="btn-default">
                     <input type="button" value="Run To Breakpoint" onclick="run_debug();" disabled id="button_run_debug" class="btn-default">
                     <input type="button" value="Save" onclick="run_debug();" disabled id="button_save" class="btn-default">
+                </td>
+            </tr>
+            <tr>
+
+                <td drop-directive>
+                    <h1>DROP</h1>
+                    <br>
+                    </td>
+                <td>
+                    <div ng-controller="SourceFileListController" style="width: 200px; max-height: 300px; overflow: auto;">
+
+                        <div ng-repeat="file in sourceFiles">
+                            <sourcefiles-directive></sourcefiles-directive>
+                        </div>
+                    </div>
+
                 </td>
             </tr>
             <tr>
@@ -58,3 +81,4 @@
     </form>
 </div>
 </body>
+</html>
