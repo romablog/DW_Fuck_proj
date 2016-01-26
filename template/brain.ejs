@@ -1,10 +1,21 @@
 <% layout('./layout/page') %>
 <% block('title', "BrainFack") %>
-
+<html ng-app="brainApp">
 <body onload="init();" style="margin-top: 50px">
 <!--<link rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css"/>-->
+<<<<<<< HEAD
+<script language="Javascript" src="/sourse/array.js"></script>
+<script src="angular/angular.js"></script>
+<script src="view1/view1.js"></script>
+<script src="/view1/brainApp.js"></script>
+=======
 <script src="/sourse/array.js"></script>
+>>>>>>> 56d540e62fc188fe1cedfe2cc2dba0382ef18c46
 <script src="/sourse/sourseCode.js"></script>
+<script src="/view1/source-service.js"></script>
+<script src="/view1/sourcelist.js"></script>
+
+<script src="view1/drop-directive.js"></script>
 
 <div id="page">
 
@@ -22,8 +33,29 @@
                 </td>
             </tr>
             <tr>
+<<<<<<< HEAD
+
+                <td drop-directive>
+                    <h1>DROP</h1>
+                    <br>
+                    </td>
+                <td>
+                    <div ng-controller="SourceFileListController" style="width: 200px; max-height: 300px; overflow: auto;">
+
+                        <div ng-repeat="file in sourceFiles">
+                            <sourcefiles-directive></sourcefiles-directive>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    Program:<br>
+=======
                 <td rowspan="2" valign="top">
                     <p>Program:</p>
+>>>>>>> 56d540e62fc188fe1cedfe2cc2dba0382ef18c46
                     <select onchange="this.form.source.value=this.options[this.selectedIndex].value; this.selectedIndex=0;" id="edit_progs">
                         <option value="">Example programs...</option>
                         <option value="++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.">Hello World</option>
@@ -56,3 +88,4 @@
     </form>
 </div>
 </body>
+</html>
