@@ -71,9 +71,9 @@ function init_targets(){
 }
 
 function init_input(){
-    g_prompt_for_input = 1;
+    g_prompt_for_input = true;
     g_input.length = 0;
-    var in_data = document.getElementById('edit_input').value;
+    var in_data = "";//document.getElementById('edit_input').value;
     for(var i=0; i<in_data.length; i++){
         g_input[g_input.length] = in_data.charAt(i);
     }
@@ -151,7 +151,7 @@ function execute_opcode(op){
     }
 }
 
-function bf_interpret(prog, input){
+function bf_interpret(prog){
 
     if (g_running){
         bf_stop_run();
@@ -165,11 +165,11 @@ function bf_interpret(prog, input){
     init_input();
 
     disable_text_box('edit_source');
-    disable_text_box('edit_input');
+    //disable_text_box('edit_input');
     disable_text_box('edit_output');
     disable_text_box('edit_progs');
-    disable_button('input_mode_1');
-    disable_button('input_mode_2');
+    //disable_button('input_mode_1');
+    //disable_button('input_mode_2');
     disable_button('button_debug');
     change_button_caption('button_run', 'Stop');
 
@@ -178,11 +178,11 @@ function bf_interpret(prog, input){
 
 function bf_stop_run(){
     enable_text_box('edit_source');
-    enable_text_box('edit_input');
+    //enable_text_box('edit_input');
     enable_text_box('edit_output');
     enable_text_box('edit_progs');
-    enable_button('input_mode_1');
-    enable_button('input_mode_2');
+    //enable_button('input_mode_1');
+   // enable_button('input_mode_2');
     enable_button('button_debug');
     change_button_caption('button_run', 'Run');
     sync_input();
@@ -321,7 +321,7 @@ function update_progview(){
 
 function update_inputview(){
     if (g_prompt_for_input){
-        set_viewdata('inputview', "-input prompt mode-");
+        set_viewdata('inputview', "");
     }else{
         var line_1 = g_input.join('');
         var line_2 = '';
@@ -346,7 +346,7 @@ function set_viewdata(view, data){
 }
 
 function run(f){
-    bf_interpret(f.source.value, f.input.value);
+    bf_interpret(f.source.value);
 }
 
 function debug_done(){
@@ -358,12 +358,12 @@ function debug_toggle(f){
     if (g_debugging == 1){
         g_debugging = 0;
         enable_text_box('edit_source');
-        enable_text_box('edit_input');
+        //enable_text_box('edit_input');
         enable_text_box('edit_output');
         enable_text_box('edit_progs');
         enable_button('button_run');
-        enable_button('input_mode_1');
-        enable_button('input_mode_2');
+        //enable_button('input_mode_1');
+        //enable_button('input_mode_2');
         change_button_caption('button_debug', 'Start Debugger');
         disable_button('button_step');
         disable_button('button_run_debug');
@@ -375,12 +375,12 @@ function debug_toggle(f){
     }else{
         g_debugging = 1;
         disable_text_box('edit_source');
-        disable_text_box('edit_input');
+        //disable_text_box('edit_input');
         disable_text_box('edit_output');
         disable_text_box('edit_progs');
         disable_button('button_run');
-        disable_button('input_mode_1');
-        disable_button('input_mode_2');
+        //disable_button('input_mode_1');
+        //disable_button('input_mode_2');
         change_button_caption('button_debug', 'Quit Debugger');
         enable_button('button_step');
         enable_button('button_run_debug');
@@ -395,7 +395,7 @@ function start_debugger(){
     init_input();
     update_memview();
     update_progview();
-    update_inputview();
+    //update_inputview();
     update_outputview();
 }
 
@@ -405,7 +405,7 @@ function run_step(){
     g_ip++;
     update_memview();
     update_progview();
-    update_inputview();
+    //update_inputview();
     update_outputview();
 
     if (g_ip >= g_program.length){
@@ -477,10 +477,10 @@ function change_button_caption(name, caption){
     elm.value = caption;
 }
 
-function sync_input(){
+/*function sync_input(){
     if (document.getElementById('input_mode_1').checked){
         disable_text_box('edit_input');
     }else{
         enable_text_box('edit_input');
     }
-}
+}*/
