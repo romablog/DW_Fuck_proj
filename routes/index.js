@@ -19,7 +19,9 @@ module.exports = function(app) {
   app.get('/paint', checkAuth, require('./paint').get);
 
   app.post('/logout', require('./logout').post);
+
   app.post('/link', require('./link').post);
   app.get('/link', require('./link').get);
 
+  app.get('/brain', require('./brain').get);
 };
