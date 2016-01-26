@@ -1,8 +1,40 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  background-color: #eeeeee;
+  color: #000000;
+  font-family: Arial, Helvetica, Sans-serif, serif;
 }
 
-a {
-  color: #00B7FF;
+textarea.editsmall {
+  width: 400px;
+  height: 100px;
+}
+
+textarea.edit {
+  width: 400px;
+  height: 200px;
+}
+
+div.main {
+  padding: 6px;
+  border: 1px solid #000000;
+  background-color: #dddddd;
+}
+
+pre.viewer {
+  width: 510px;
+  padding: 6px;
+  border: 1px solid #000000;
+  background-color: #dddddd;
+  margin: 0px;
+}
+
+p.viewer {
+  width: 510px;
+  padding: 6px;
+  border: 1px solid #000000;
+  background-color: #dddddd;
+  margin: 0px;
+  font-family: monospace;
+  white-space: pre;
 }
