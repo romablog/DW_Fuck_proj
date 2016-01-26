@@ -158,7 +158,6 @@ function bf_interpret(prog){
         return;
     }
     g_running = 1;
-
     init_prog(prog);
     init_memory();
     init_io();
