@@ -1,7 +1,8 @@
 <% layout('./layout/page') %>
 <% block('title', "BrainFack") %>
 
-<body onload="init();" style="margin-top: 100px">
+<body onload="init();" style="margin-top: 50px">
+<!--<link rel="stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.css"/>-->
 <script language="Javascript" src="/sourse/array.js"></script>
 <script src="/sourse/sourseCode.js"></script>
 
@@ -10,8 +11,17 @@
     <form name="mainform" id="mainform">
 
         <table cellspacing="20" cellpadding="0" border="0" align="center">
-            <tr valign="top">
-                <td>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="button" value="Run" onclick="run(this.form);" id="button_run" class="btn-default">
+                    <input type="button" value="Start Debugger" onclick="debug_toggle(this.form);" id="button_debug" class="btn-default">
+                    <input type="button" value="Single Step" onclick="run_step();" disabled id="button_step" class="btn-default">
+                    <input type="button" value="Run To Breakpoint" onclick="run_debug();" disabled id="button_run_debug" class="btn-default">
+                    <input type="button" value="Save" onclick="run_debug();" disabled id="button_save" class="btn-default">
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
                     Program:<br>
                     <select onchange="this.form.source.value=this.options[this.selectedIndex].value; this.selectedIndex=0;" id="edit_progs">
                         <option value="">Example programs...</option>
@@ -20,52 +30,32 @@
                         <option value="+++++++++++>+>>>>++++++++++++++++++++++++++++++++++++++++++++>++++++++++++++++++++++++++++++++<<<<<<[>[>>>>>>+>+<<<<<<<-]>>>>>>>[<<<<<<<+>>>>>>>-]<[>++++++++++[-<-[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<[>>>+<<<-]>>[-]]<<]>>>[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<+>>[-]]<<<<<<<]>>>>>[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]++++++++++<[->-<]>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<<<<<<<[>>>+>+<<<<-]>>>>[<<<<+>>>>-]<-[>>.>.<<<[-]]<<[>>+>+<<<-]>>>[<<<+>>>-]<<[<+>-]>[<+>-]<<<-]">Fibonacci Numbers</option>
                         <option value="++++++++++++++++++++#++++++++++++++++++++#++++++++++++++++++++#++++++++++++++++++++#++++++++++++++++++++#-.--.+++++++++++.">Breakpoints Demo</option>
                     </select><br>
-                    <textarea id="edit_source" name="source" wrap="virtual" class="edit"></textarea><br>
-                    <br>
-
-                    Input:<br>
-                    <input type="radio" id="input_mode_1" name="input_mode" value="1" onclick="sync_input();"> Prompt for input as needed<br>
-                    <input type="radio" id="input_mode_2" name="input_mode" value="2" onclick="sync_input();" checked> Pre-supply input:<br>
-                    <textarea id="edit_input" name="input" wrap="virtual" class="editsmall"></textarea><br>
-                    <br>
-
-                    Output:<br>
-                    <textarea id="edit_output" name="output" wrap="virtual" class="editsmall"></textarea><br>
+                    <textarea cols="50" rows="20" id="edit_source" name="source" wrap="virtual" class="edit"></textarea><br>
                     <br>
                 </td>
-                <td>
-                    <br>
-                    <input type="button" value="Run" onclick="run(this.form);" id="button_run">
-                    <input type="button" value="Start Debugger" onclick="debug_toggle(this.form);" id="button_debug">
-                    <input type="button" value="Single Step" onclick="run_step();" disabled id="button_step">
-                    <input type="button" value="Run To Breakpoint" onclick="run_debug();" disabled id="button_run_debug">
-                    <br>
-                    <br>
-
+                <td style="min-width: 500px">
                     Source Viewer:<br>
-                    <pre class="viewer" id="progview"> </pre>
-                    <br>
-
-                    Memory Viewer:<br>
-                    <p class="viewer" id="memview"> </p>
-                    <br>
-
-                    Input Viewer:<br>
-                    <pre class="viewer" id="inputview"> </pre>
-                    <br>
-
+                    <pre class="viewer" id="progview"> </pre><br>
+                    Output:<br>
+                    <pre id="edit_output" name="output" wrap="virtual" class="editsmall"></pre><br>
                     Output Viewer:<br>
                     <pre class="viewer" id="outputview"> </pre>
                     <br>
+                </td>
+                <td rowspan="2">
+                    Memory Viewer:<br>
+                    <p class="viewer" id="memview"> </p>
+                    <br>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
 
                     <b>Note:</b> The hash ("#") character marks a breakpoint.
                 </td>
             </tr>
         </table>
-
     </form>
-
 </div>
-
 </body>
 </html>
