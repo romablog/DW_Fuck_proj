@@ -23,7 +23,9 @@ function init(){
 
     document.getElementById('edit_source').value = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.";
     g_debugging = 1;
-    //debug_toggle(document.getElementById('mainform'));
+    init_memory();
+    update_memview();
+    debug_toggle(document.getElementById('mainform'));
 }
 
 function init_memory(){
@@ -182,7 +184,7 @@ function bf_stop_run(){
     enable_text_box('edit_output');
     enable_text_box('edit_progs');
     //enable_button('input_mode_1');
-   // enable_button('input_mode_2');
+    // enable_button('input_mode_2');
     enable_button('button_debug');
     change_button_caption('button_run', 'Run');
     //sync_input();
@@ -467,9 +469,9 @@ function change_button_caption(name, caption){
 }
 
 /*function sync_input(){
-    if (document.getElementById('input_mode_1').checked){
-        disable_text_box('edit_input');
-    }else{
-        enable_text_box('edit_input');
-    }
-}*/
+ if (document.getElementById('input_mode_1').checked){
+ disable_text_box('edit_input');
+ }else{
+ enable_text_box('edit_input');
+ }
+ }*/
