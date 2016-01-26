@@ -71,7 +71,7 @@ function init_targets(){
 }
 
 function init_input(){
-    g_prompt_for_input = 1;
+    g_prompt_for_input = true;
     g_input.length = 0;
     var in_data = "";//document.getElementById('edit_input').value;
     for(var i=0; i<in_data.length; i++){
@@ -151,7 +151,7 @@ function execute_opcode(op){
     }
 }
 
-function bf_interpret(prog, input){
+function bf_interpret(prog){
 
     if (g_running){
         bf_stop_run();
@@ -346,7 +346,7 @@ function set_viewdata(view, data){
 }
 
 function run(f){
-    bf_interpret(f.source.value, f.input.value);
+    bf_interpret(f.source.value);
 }
 
 function debug_done(){
@@ -395,7 +395,7 @@ function start_debugger(){
     init_input();
     update_memview();
     update_progview();
-    update_inputview();
+    //update_inputview();
     update_outputview();
 }
 
@@ -405,7 +405,7 @@ function run_step(){
     g_ip++;
     update_memview();
     update_progview();
-    update_inputview();
+    //update_inputview();
     update_outputview();
 
     if (g_ip >= g_program.length){
